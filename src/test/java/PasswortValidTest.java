@@ -4,30 +4,60 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PasswortValidTest {
 
-    @Test
-    void pwLength(){
 
+    @Test
+    void pwLengthTest(){
         // Given
-        String passwort = "einsehrlangeswort";
+        String password = "DasPasswortIstLangGenug";
 
         // When
-        String actual = PasswortValid.pwLength(passwort);
+        boolean actual = PasswortValid.pwCheckForLength(password);
 
         // Then
-        assertEquals("einsehrlangeswort", actual);
-
+        assertEquals(true ,actual);
     }
-
     @Test
-    void checkForNum(){
-
+    void pwCheckforNumberTest(){
         // Given
-        String passwort = ;
+        String password = "0IstEineZahl";
 
         // When
-        String actual = PasswortValid.checkForNum(passwort);
+        boolean actual = PasswortValid.pwCheckForNumber(password);
 
         // Then
-        assertEquals(, actual);
+        assertEquals(true, actual);
+    }
+    @Test
+    void pwCheckforLowerCaseTest(){
+        // Given
+        String password = "GrossBuchstaben";
+
+        // When
+        boolean actual = PasswortValid.pwCheckForLowerCase(password);
+
+        // Then
+        assertEquals(true, actual);
+    }
+    @Test
+    void pwCheckforUpperCaseTest(){
+        // Given
+        String password = "GrossBuchstaben";
+
+        // When
+        boolean actual = PasswortValid.pwCheckForUpperCase(password);
+
+        // Then
+        assertEquals(true, actual);
+    }
+    @Test
+    void pwUnsafe(){
+        // Given
+        String password = "LSJIVNEOWJJVO";
+
+        // When
+        boolean actual = PasswortValid.pwUnsafe(password);
+
+        // Then
+        assertEquals(true, actual);
     }
 }
